@@ -4,7 +4,7 @@
 
 <main>
 	{#each data.users as { avatar, lastName }}
-		<a sveltekit:prefetch href={`/${lastName}`} class="box">
+		<a data-sveltekit-preload-data="hover" href={`/${lastName}`} class="box">
 			<img src={avatar} alt={lastName} />
 			<h2>{lastName}</h2>
 		</a>
