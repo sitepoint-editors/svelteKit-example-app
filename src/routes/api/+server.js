@@ -1,4 +1,5 @@
 import faker from 'faker';
+import { json } from '@sveltejs/kit';
 
 const generateCovers = () =>
 	[...Array(50)].map(() => {
@@ -6,8 +7,6 @@ const generateCovers = () =>
 		return { avatar: `https://avatars.dicebear.com/api/human/${lastName}.svg`, lastName };
 	});
 
-export async function get() {
-	return {
-		body: generateCovers()
-	};
+export function GET() {
+	return json(generateCovers());
 }

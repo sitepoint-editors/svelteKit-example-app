@@ -1,22 +1,10 @@
-<script context="module">
-	export async function load({ fetch }) {
-		const res = await fetch('/api');
-
-		if (res.ok) return { props: { users: await res.json() } };
-		return {
-			status: res.status,
-			error: new Error()
-		};
-	}
-</script>
-
 <script>
-	export let users;
+	export let data;
 </script>
 
 <main>
-	{#each users as { avatar, lastName }}
-		<a sveltekit:prefetch href={`/${lastName}`} class="box">
+	{#each data.users as { avatar, lastName }}
+		<a data-sveltekit-preload-data="hover" href={`/${lastName}`} class="box">
 			<img src={avatar} alt={lastName} />
 			<h2>{lastName}</h2>
 		</a>
